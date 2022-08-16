@@ -3,83 +3,94 @@ import 'package:just_audio/just_audio.dart';
 void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
+
+  void playSound(int soundNumber)
+  {
+    final player = AudioPlayer();
+    player.setAsset('assets/note$soundNumber.wav');
+    player.play();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.red,
-                ),
-                onPressed: () {
-                  final player = AudioPlayer();
-                   player.setAsset('assets/note1.wav');
-                  player.play();
-                },
-              ),
-        TextButton(
-          style: TextButton.styleFrom(
-            backgroundColor: Colors.yellow,
-          ),
-          onPressed: () {
-            final player = AudioPlayer();
-            player.setAsset('assets/note2.wav');
-            player.play();
-          },
-          ),
-          TextButton(
-            style: TextButton.styleFrom(
-              backgroundColor: Colors.green,
-            ),
-            onPressed: () {
-              final player = AudioPlayer();
-              player.setAsset('assets/note3.wav');
-              player.play();
-            },
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.teal,
-              ),
-              onPressed: () {
-                final player = AudioPlayer();
-                player.setAsset('assets/note4.wav');
-                player.play();
-              },
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                ),
-                onPressed: () {
-                  final player = AudioPlayer();
-                  player.setAsset('assets/note5.wav');
-                  player.play();
-                },
-                ),
-                TextButton(
+              Expanded(
+                child: TextButton(
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.orange,
+                    backgroundColor: Colors.red,
                   ),
                   onPressed: () {
-                    final player = AudioPlayer();
-                    player.setAsset('assets/note6.wav');
-                    player.play();
+                    playSound(1);
+                  },
+                ),
+              ),
+        Expanded(
+          child: TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.yellow,
+            ),
+            onPressed: () {
+              playSound(2);
+            },
+            ),
+        ),
+          Expanded(
+            child: TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.green,
+              ),
+              onPressed: () {
+                playSound(3);
+              },
+              ),
+          ),
+            Expanded(
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                ),
+                onPressed: () {
+                  playSound(4);
+                },
+                ),
+            ),
+              Expanded(
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                  ),
+                  onPressed: () {
+                    playSound(5);
                   },
                   ),
-                  TextButton(
+              ),
+                Expanded(
+                  child: TextButton(
                     style: TextButton.styleFrom(
-                      backgroundColor: Colors.purple,
+                      backgroundColor: Colors.orange,
                     ),
                     onPressed: () {
-                      final player = AudioPlayer();
-                      player.setAsset('assets/note7.wav');
-                      player.play();
+                      playSound(6); 
                     },
                     ),
+                ),
+                  Expanded(
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.purple,
+                      ),
+                      onPressed: () {
+                        playSound(7);
+                      },
+                      ),
+                  ),
             ],
           ),
         ),
